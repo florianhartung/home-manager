@@ -2,8 +2,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "hart_fo";
-  home.homeDirectory = "/home/hart_fo";
+  home.username = "flo";
+  home.homeDirectory = "/home/flo";
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -19,17 +19,21 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    helix
     neovim
     jetbrains.idea-community
     git
     gh
-    rustup
-    element-desktop
     jetbrains-mono
-    # (nerdfonts.override { fonts = ["JetBrainsMono"]; })
     nerdfonts
     fish
     alacritty
+    awesome
+    neovim
+    docker
+    unzip
+    gnome.dconf-editor
+    btop
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -46,6 +50,10 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+    ".config/helix" = {
+      source = ./helix;
+      recursive = true;
+    };
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -70,7 +78,7 @@
   #  /etc/profiles/per-user/hart_fo/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "hx";
   };
 
 
@@ -85,6 +93,9 @@
     "org/gnome/desktop/peripherals/touchpad" = {
       tap-to-click = true;
       tap-and-drag-lock = true;
+    };
+    "org/gnome/desktop/input-sources" = {
+      xkb-options = [ "terminate:ctrl_alt_bksp" "caps:escape" ];
     };
     "org/gnome/Console" = {
       use-system-font = false;
@@ -112,5 +123,9 @@
     window.opacity = 0.85;
     font.normal = { family = "Jetbrains Mono"; };
   };
+
+
+  xsession.enable = true;
+  xsession.windowManager.awesome.enable = true;
 }
 
