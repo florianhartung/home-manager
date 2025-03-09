@@ -4,6 +4,7 @@
     ./firefox
     ./vscodium
     ./helix
+    ./zellij
 
     ./alacritty.nix
     ./fish.nix

@@ -102,7 +102,7 @@
 
   home.sessionVariables = {
     EDITOR = "${pkgs.helix}/bin/hx";
-    SHELL = "${pkgs.fish}/bin/fish";
+    # SHELL = "fish";
 
     # For VSCodium
     ELECTRON_OZONE_PLATFORM_HINT="wayland";
