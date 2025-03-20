@@ -68,7 +68,6 @@
   home.packages = with pkgs; [
     ## development
     neovim
-    jetbrains.idea-community
     broot
 
     ## git
