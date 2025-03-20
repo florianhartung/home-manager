@@ -46,6 +46,25 @@
 
   imports = [ ./programs ./gde-config.nix ];
 
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    documents = "docs";
+    download = "downloads";
+    desktop = null;
+    music = null;
+    pictures = null;
+    templates = null;
+    videos = null;
+    publicShare = null;
+  };
+
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
+  
+
   home.packages = with pkgs; [
     ## development
     neovim
@@ -53,7 +72,6 @@
     broot
 
     ## git
-    git
     gh
 
     ## virtualization
@@ -99,6 +117,12 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  home.shellAliases = {
+    cdg = "cd ~/git";
+    cdm = "cd ~/git/florianhartung";
+    hswitch = "home-manager switch";
+  };
 
   home.sessionVariables = {
     EDITOR = "${pkgs.helix}/bin/hx";

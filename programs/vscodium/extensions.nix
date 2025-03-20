@@ -15,6 +15,9 @@ pkgs: with pkgs.vscode-extensions; [
   vscodevim.vim
   tomoki1207.pdf
   redhat.vscode-yaml
+  mkhl.direnv
+  streetsidesoftware.code-spell-checker
+  jnoortheen.nix-ide
 ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
   {
     name = "vscode-openapi";

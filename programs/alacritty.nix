@@ -7,6 +7,8 @@
     font = {
       normal = { family = "Jetbrains Mono"; };
       size = 13;
+      # normal = { family = "Unifont"; };
+      # size = 30;
     };
   };
 }

@@ -5,7 +5,7 @@
     };
     "org/gnome/desktop/peripherals/mouse" = {
       accel-profile = "flat";
-      speed = 0.2;
+      speed = -0.3;
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       tap-to-click = true;

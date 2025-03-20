@@ -37,6 +37,8 @@ flatten {
 
     # Languages and extensions
 
+    "python.terminal.activateEnvironment" = false;
+
     "[python]" = {
         "editor.defaultFormatter" = "charliermarsh.ruff";
     };
