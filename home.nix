@@ -14,6 +14,12 @@
   xsession.windowManager.awesome.enable = false;
 
   # programs.kitty.enable = true;
+  # home.keyboard = {
+  #   layout = "us";
+  #   variant = "altgr-intl";
+  #   options = [ "terminate:ctrl_alt_bksp" "caps:escape" ];
+  # };
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
