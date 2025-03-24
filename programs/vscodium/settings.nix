@@ -30,6 +30,7 @@ flatten {
     "workbench" = {
         "colorTheme" = "GitHub Dark Dimmed";
         "editor.empty.hint" = "hidden";
+        "panel.defaultLocation" = "right";
     };
 
     "git.openRepositoryInParentFolders" = "never";
