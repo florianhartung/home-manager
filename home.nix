@@ -82,7 +82,6 @@
     discord
 
     ## environment
-    fish
     awesome
     alacritty
     mutter
@@ -126,7 +125,6 @@
 
   home.sessionVariables = {
     EDITOR = "${pkgs.helix}/bin/hx";
-    # SHELL = "fish";
 
     # For VSCodium
     ELECTRON_OZONE_PLATFORM_HINT="wayland";
