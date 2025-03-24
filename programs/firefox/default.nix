@@ -10,7 +10,7 @@
         engines = import ./search-engines.nix;
         force = true;
 
-        default = "Google";
+        default = "DuckDuckGo";
         privateDefault = "DuckDuckGo";
       };
       userContent = ''
