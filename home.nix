@@ -15,7 +15,7 @@
 
   # programs.kitty.enable = true;
   wayland.windowManager.hyprland = {
-    enable = false;
+    enable = true;
     systemd.enable = true;
     systemd.enableXdgAutostart = true;
     settings = {
