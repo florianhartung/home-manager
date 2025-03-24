@@ -39,7 +39,8 @@
               )
               9)
           );
-      };  };
+      };
+    };
   
 
   fonts.fontconfig.enable = true;
