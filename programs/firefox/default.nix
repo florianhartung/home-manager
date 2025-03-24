@@ -1,10 +1,10 @@
-{ pkgs, lib, firefox-addons, ... }:
+{ pkgs, lib, firefox-addons, ... }@inputs:
 {
   programs.firefox = {
     enable = true;
     profiles.default = {
       bookmarks = import ./bookmarks.nix;
-      settings = import ./settings.nix lib;
+      settings = import ./settings.nix inputs;
       extensions = import ./extensions.nix { inherit firefox-addons pkgs; };
       search = {
         engines = import ./search-engines.nix;

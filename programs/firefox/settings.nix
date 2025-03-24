@@ -1,13 +1,14 @@
 # For info how to use, see:
 # <https://searchfox.org/mozilla-release/source/browser/app/profile/firefox.js>
 
-lib:
+{ lib, config, ...}:
 let 
   flatten = (import ../../util.nix lib).flatten;
 in
 {
   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
+  "browser.download.dir" = "~/${config.xdg.userDirs.download}";
   "browser.startup.page" = 3; # 0 = blank, 1 = home (browser.startup.homepage), 2 = last visited page, 3 = resume previous browser session
   "browser.uiCustomization.state" = {
     placements = {
