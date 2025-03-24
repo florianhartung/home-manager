@@ -2,10 +2,11 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
+      show-battery-percentage = true;
     };
     "org/gnome/desktop/peripherals/mouse" = {
       accel-profile = "flat";
-      speed = -0.3;
+      speed = -0.5;
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       tap-to-click = true;
@@ -24,6 +25,10 @@
 
     "org/gnome/mutter" = {
       experimental-features = [ "scale-monitor-framebuffer" ];
+    };
+    "org/gnome/settings-daemon/plugins/power" = {
+      sleep-inactive-ac-type = "nothing";
+      sleep-inactive-battery-type = "nothing";
     };
   };
 }
