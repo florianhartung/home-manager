@@ -73,6 +73,8 @@
   
 
   home.packages = with pkgs; [
+    vlc
+
     ## development
     neovim
     broot
