@@ -35,6 +35,9 @@ flatten {
 
     "git.openRepositoryInParentFolders" = "never";
 
+    # Vscodium sometimes ignores key rebinding of ESC to CAPS
+    "keyboard.dispatch" = "keyCode";
+
 
     # Languages and extensions
 
