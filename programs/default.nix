@@ -9,6 +9,5 @@
     ./alacritty.nix
     ./fish.nix
     ./git.nix
-    ./rustic.nix
   ];
 }
