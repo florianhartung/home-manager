@@ -1,7 +1,7 @@
 { config, pkgs, pkgs-unstable, ... }:
 {
-  home.username = "flo";
-  home.homeDirectory = "/home/flo";
+  home.username = "hart_fo";
+  home.homeDirectory = "/home/hart_fo";
   home.stateVersion = "23.11"; # shouldn't be changed ever
   
   programs.home-manager.enable = true;
@@ -21,7 +21,7 @@
   # };
 
   wayland.windowManager.hyprland = {
-    enable = true;
+    enable = false;
     systemd.enable = true;
     systemd.enableXdgAutostart = true;
     settings = {
@@ -51,7 +51,7 @@
 
   fonts.fontconfig.enable = true;
 
-  imports = [ ./programs ./gde-config.nix ];
+  imports = [ ./programs ./gde-config.nix ./work.nix ];
 
   xdg.userDirs = {
     enable = true;
@@ -79,13 +79,13 @@
     ## development
     neovim
     broot
+    nixd # nix lsp
 
     ## git
     gh
 
     ## virtualization
     docker
-    wasmedge
 
     ## environment
     awesome
@@ -102,18 +102,19 @@
     btop
     xclip
     nix-search-cli
+    wl-clipboard
 
-    spotify
+    # spotify
 
     ## gaming
-    steam
+    # steam
 
     ## network analysis
-    wireshark
+    # wireshark
     # ettercap
 
     # TODO should be configured per-project through flakes
-    poetry
+    # poetry
 
     (pkgs.writeShellScriptBin "todo" ''
       ${pkgs.helix}/bin/hx ~/docs/todo.md

@@ -14,4 +14,9 @@
     keyword = "rules";
     url = "moz-extension://62fc4545-e66a-4d55-b3f6-af370b2feb96/dashboard.html#dyna-rules.html";
   }
+  {
+    name = "Home directory";
+    keyword = "home";
+    url = "file:///home/hart_fo";
+  }
 ]
