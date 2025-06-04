@@ -94,6 +94,7 @@
     dconf-editor
 
     ## fonts
+    jetbrains-mono
     nerd-fonts.jetbrains-mono
 
     ## utils
