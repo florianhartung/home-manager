@@ -3,7 +3,8 @@
   programs.firefox = {
     enable = true;
     profiles.default = {
-      bookmarks = import ./bookmarks.nix;
+      # Only load bookmarks on initial setup
+      # bookmarks = import ./bookmarks.nix;
       settings = import ./settings.nix inputs;
       extensions = import ./extensions.nix { inherit firefox-addons pkgs; };
       search = {

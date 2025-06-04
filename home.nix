@@ -74,6 +74,7 @@
 
   home.packages = with pkgs; [
     vlc
+    yubioath-flutter
 
     ## development
     neovim
@@ -85,9 +86,6 @@
     ## virtualization
     docker
     wasmedge
-
-    ## socials
-    discord
 
     ## environment
     awesome
@@ -117,6 +115,9 @@
     # TODO should be configured per-project through flakes
     poetry
 
+    (pkgs.writeShellScriptBin "todo" ''
+      ${pkgs.helix}/bin/hx ~/docs/todo.md
+    '')
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
