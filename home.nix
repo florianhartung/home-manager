@@ -94,8 +94,7 @@
     dconf-editor
 
     ## fonts
-    jetbrains-mono
-    nerdfonts
+    nerd-fonts.jetbrains-mono
 
     ## utils
     unzip
