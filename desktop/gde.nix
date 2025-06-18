@@ -1,4 +1,5 @@
-{ config, pkgs, ... }:
+{ lib, config, ... }:
+with lib.hm.gvariant;
 let
   cfg = config.desktop;
 in {
@@ -16,6 +17,7 @@ in {
       tap-and-drag-lock = true;
     };
     "org/gnome/desktop/input-sources" = {
+      sources = [ (mkTuple ["xkb" "us+altgr-intl"]) ];
       xkb-options = [ "terminate:ctrl_alt_bksp" "caps:escape" ];
     };
     "org/gnome/desktop/applications/terminal" = {

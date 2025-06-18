@@ -7,6 +7,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # programs.kitty.enable = true;
+
   # home.keyboard = {
   #   layout = "us";
   #   variant = "altgr-intl";
