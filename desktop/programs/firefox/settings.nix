@@ -3,10 +3,11 @@
 
 { lib, config, ...}:
 let 
-  flatten = (import ../../util.nix lib).flatten;
+  flatten = (import ../../../util.nix lib).flatten;
 in
 {
   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+  "layout.css.prefers-color-scheme.content-override" = 0;
 
   "browser.download.dir" = "~/${config.xdg.userDirs.download}";
   "browser.startup.page" = 3; # 0 = blank, 1 = home (browser.startup.homepage), 2 = last visited page, 3 = resume previous browser session

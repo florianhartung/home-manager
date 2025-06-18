@@ -1,12 +1,15 @@
-{ pkgs, ... }: {
-  dconf.settings = {
+{ config, pkgs, ... }:
+let
+  cfg = config.desktop;
+in {
+  config.dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       show-battery-percentage = true;
     };
     "org/gnome/desktop/peripherals/mouse" = {
       accel-profile = "flat";
-      speed = -0.55;
+      speed = (assert cfg.mouse-speed > -1.0 && cfg.mouse-speed < 1.0; cfg.mouse-speed);
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       tap-to-click = true;
@@ -15,12 +18,8 @@
     "org/gnome/desktop/input-sources" = {
       xkb-options = [ "terminate:ctrl_alt_bksp" "caps:escape" ];
     };
-    "org/gnome/Console" = {
-      use-system-font = false;
-      custom-font = "JetBrains Mono 10";
-    };
     "org/gnome/desktop/applications/terminal" = {
-      exec = "${pkgs.alacritty}/bin/alacritty";
+      exec = cfg.terminal;
     };
 
     "org/gnome/mutter" = {
