@@ -42,24 +42,6 @@ with pkgs.vscode-extensions;
     version = "1.4.1";
     sha256 = "sha256-zs7E3pxf4P8kb3J+5zLoAO2dvTeepuCuBJi5s354k0I=";
   }
-  {
-    name = "wgsl";
-    publisher = "polymeilex";
-    version = "0.1.17";
-    sha256 = "sha256-vGqvVrr3wNG6HOJxOnJEohdrzlBYspysTLQvWuP0QIw=";
-  }
-  {
-    name = "shader";
-    publisher = "slevesque";
-    version = "1.1.5";
-    sha256 = "sha256-Pf37FeQMNlv74f7LMz9+CKscF6UjTZ7ZpcaZFKtX2ZM=";
-  }
-  {
-    name = "wit-idl";
-    publisher = "bytecodealliance";
-    version = "0.3.9";
-    sha256 = "sha256-FsE/oop7X4lhotbt0TbNyzeUvy+IGK3MXVorZVux8qk=";
-  }
   # {
   #   name = "vscode-sqlfluff";
   #   publisher = "dorzey";
