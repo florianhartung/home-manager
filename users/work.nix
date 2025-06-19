@@ -1,17 +1,10 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 {
-  home.username = "flo";
-  home.homeDirectory = "/home/flo";
-  home.stateVersion = "25.05"; # shouldn't be changed ever
+  home.username = "hart_fo";
+  home.homeDirectory = "/home/hart_fo";
+  home.stateVersion = "23.11"; # shouldn't be changed ever
   
   nixpkgs.config.allowUnfree = true;
-
-  # programs.kitty.enable = true;
-  # home.keyboard = {
-  #   layout = "us";
-  #   variant = "altgr-intl";
-  #   options = [ "terminate:ctrl_alt_bksp" "caps:escape" ];
-  # };
 
   imports = [
     # Common home config
@@ -26,7 +19,7 @@
   ];
 
   desktop = {
-    mouse-speed = -1.0;
+    mouse-speed = 0.58;
   };
 
   home.packages = with pkgs; [
@@ -41,6 +34,7 @@
 
     mutter
     dconf-editor
+    wl-clipboard
 
     (pkgs.writeShellScriptBin "todo" ''
       ${pkgs.helix}/bin/hx ~/docs/todo.md
