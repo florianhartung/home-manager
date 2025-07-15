@@ -28,13 +28,14 @@
 
     unzip
     btop
-    mattermost
+    mattermost-desktop
     citrix_workspace
     openssl
 
     mutter
     dconf-editor
     wl-clipboard
+    jabref
 
     (pkgs.writeShellScriptBin "todo" ''
       ${pkgs.helix}/bin/hx ~/docs/todo.md
