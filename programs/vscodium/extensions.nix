@@ -7,13 +7,18 @@ pkgs: with pkgs.vscode-extensions; [
   k--kato.intellij-idea-keybindings
   rust-lang.rust-analyzer
   myriad-dreamin.tinymist 
-  vscodevim.vim
+  # vscodevim.vim
   tomoki1207.pdf
   redhat.vscode-yaml
   mkhl.direnv
   streetsidesoftware.code-spell-checker
   jnoortheen.nix-ide
+<<<<<<< HEAD
   mathiasfrohlich.kotlin
+=======
+  valentjn.vscode-ltex
+  pkgs.nix-vscode-extensions.vscode-marketplace.jasew.vscode-helix-emulation
+>>>>>>> 5bc7676 (wip: work stuff)
 ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
   {
     name = "vscode-wasm";

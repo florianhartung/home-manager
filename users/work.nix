@@ -36,6 +36,7 @@
     dconf-editor
     wl-clipboard
     jabref
+    ltex-ls
 
     (pkgs.writeShellScriptBin "todo" ''
       ${pkgs.helix}/bin/hx ~/docs/todo.md
