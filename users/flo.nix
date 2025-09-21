@@ -38,6 +38,29 @@
     hswitch = "home-manager switch";
   };
 
+  xdg.enable = true;
+  xdg.desktopEntries = {
+    looking-glass-fix = {
+      type = "Application";
+      name = "Looking Glass (fix)";
+      exec = "__NV_DISABLE_EXPLICIT_SYNC=1 looking-glass-client";
+      terminal = false;
+      categories = ["System"];
+
+      # SingleMainWindow = true;
+      # Icon="looking-glass";
+    };
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    pinentry.package = pkgs.pinentry-gnome3;
+  };
+  programs.gpg = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
     vlc
     yubioath-flutter
@@ -61,6 +84,25 @@
 
     ## gaming
     steam
+
+    # mail
+    # thunderbird
+    protonmail-desktop
+    # protonmail-bridge-gui
+
+
+    goxel
+    atlauncher
+    worldpainter
+
+    quickemu
+
+    keepassxc
+
+    jabref
+    obsidian
+    element-desktop
+    pinentry
 
     ## network analysis
     # wireshark

@@ -18,6 +18,7 @@ pkgs: with pkgs.vscode-extensions; [
   mkhl.direnv
   streetsidesoftware.code-spell-checker
   jnoortheen.nix-ide
+  mathiasfrohlich.kotlin
 ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
   {
     name = "vscode-openapi";
@@ -48,6 +49,12 @@ pkgs: with pkgs.vscode-extensions; [
     publisher = "slevesque";
     version = "1.1.5";
     sha256 = "sha256-Pf37FeQMNlv74f7LMz9+CKscF6UjTZ7ZpcaZFKtX2ZM=";
+  }
+  {
+    name = "wit-idl";
+    publisher = "bytecodealliance";
+    version = "0.3.9";
+    sha256 = "sha256-FsE/oop7X4lhotbt0TbNyzeUvy+IGK3MXVorZVux8qk=";
   }
   # {
   #   name = "vscode-sqlfluff";

@@ -4,4 +4,6 @@ with firefox-addons.packages.${pkgs.system}; [
   darkreader
   return-youtube-dislikes
   stylus
+  youtube-shorts-block
+  leechblock-ng
 ]

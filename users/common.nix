@@ -4,11 +4,10 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  home.sessionVariables = {
-    EDITOR = "${pkgs.helix}/bin/hx";
-  };
+  home.sessionVariables = { };
 
   # default directories are ugly
+  xdg.enable = true;
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
