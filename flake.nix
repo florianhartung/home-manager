@@ -4,6 +4,7 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,15 +16,16 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, firefox-addons, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, firefox-addons, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
     in {
       homeConfigurations."flo" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./users/flo.nix ];
-        extraSpecialArgs = { inherit firefox-addons; };
+        extraSpecialArgs = { inherit firefox-addons pkgs-unstable; };
       };
       homeConfigurations."hart_fo" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;

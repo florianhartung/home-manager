@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs-unstable, ... }:
 let
     flatten = (import ../../util.nix lib).flatten;
 in
@@ -64,4 +64,5 @@ flatten {
     "typescript.updateImportsOnFileMove.enabled" = "never";
     "typst-lsp.exportPdf" = "never";
     "vim.useSystemClipboard" = true;
+    "rust-analyzer.server.path" = "${pkgs-unstable.rust-analyzer}/bin/rust-analyzer";
 }

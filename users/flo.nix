@@ -103,6 +103,8 @@
     obsidian
     element-desktop
     pinentry
+    rust-analyzer
+  
 
     ## network analysis
     # wireshark
