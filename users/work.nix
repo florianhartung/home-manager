@@ -50,7 +50,7 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "${pkgs.helix}/bin/hx";
+    # EDITOR = "${pkgs.helix}/bin/hx";
 
     # For VSCodium
     ELECTRON_OZONE_PLATFORM_HINT="wayland";
