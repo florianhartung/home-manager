@@ -8,5 +8,6 @@
     ./gde-stuff.nix
     ./rustic.nix
     ./vscodium
+    ./zed.nix
   ];
 }

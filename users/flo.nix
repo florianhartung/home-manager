@@ -35,6 +35,7 @@
       mouse-speed = 0.58;
     };
     vscodium.enable = true;
+    zed.enable = true;
   };
 
   xdg.enable = true;
