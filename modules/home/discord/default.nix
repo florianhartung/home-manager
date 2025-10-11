@@ -1,5 +1,6 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 let
+  cfg = config.modules.discord;
   krisp-patcher = pkgs.writers.writePython3Bin "krisp-patcher" {
     libraries = with pkgs.python3Packages; [ capstone pyelftools ];
     flakeIgnore = [
@@ -10,8 +11,14 @@ let
   } (builtins.readFile ./krisp-patcher.py);
 in
 {
-  home.packages = [
-    pkgs.discord
-    krisp-patcher
-  ];
+  options.modules.discord = {
+    enable = lib.mkEnableOption "discord";
+  };
+
+  config = lib.mkIf cfg.enable {
+    home.packages = [
+      pkgs.discord
+      krisp-patcher
+    ];
+  };
 }

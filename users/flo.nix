@@ -15,27 +15,26 @@
   # };
 
   imports = [
-    # Common home config
     ./common.nix
-    ../programs/common
-
-    # Desktop and basic programs
-    ../desktop
-
-    # Additional programs
-    ../programs/rustic.nix
-    ../programs/discord
-    ../programs/vscodium
+    ../modules/home
   ];
-
-  desktop = {
-    mouse-speed = 0.58;
-  };
 
   home.shellAliases = {
     cdg = "cd ~/git";
     cdm = "cd ~/git/florianhartung";
     hswitch = "home-manager switch";
+  };
+
+  modules = {
+    alacritty.enable = true;
+    discord.enable = true;
+    firefox.enable = true;
+    fonts.enable = true;
+    gde-stuff = {
+      enable = true;
+      mouse-speed = 0.58;
+    };
+    vscodium.enable = true;
   };
 
   xdg.enable = true;

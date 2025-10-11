@@ -1,6 +1,6 @@
-lib: {
+{ lib, ... }: {
   # Stolen from  https://discourse.nixos.org/t/flatten-nested-set-to-name-value-pairs-named-after-the-old-path/59713
-  flatten = set:
+  flatten-nested-sets = set:
       let
         recurse =
           path:

@@ -1,8 +1,8 @@
-{ lib, pkgs-unstable, ... }:
+{ my-lib, pkgs-unstable, ... }:
 let
-    flatten = (import ../../util.nix lib).flatten;
+    flatten-nested-sets = my-lib.flatten-nested-sets;
 in
-flatten {
+flatten-nested-sets {
     "terminal" = {
         "integrated.defaultProfile.linux" = "fish";
         "integrated.allowedLinkSchemes" = [

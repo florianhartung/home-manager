@@ -1,9 +1,9 @@
 # For info how to use, see:
 # <https://searchfox.org/mozilla-release/source/browser/app/profile/firefox.js>
 
-{ lib, config, ...}:
+{ lib, my-lib, config, ...}:
 let 
-  flatten = (import ../../../util.nix lib).flatten;
+  flatten-nested-sets = my-lib.flatten-nested-sets;
 in
 {
   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
@@ -56,7 +56,7 @@ in
     newElementCount = 8;
   };
 } // 
-flatten {
+flatten-nested-sets {
   "browser.newtabpage.activity-stream" = {
     "showSponsoredTopSites" = false;
     "showSponsored" = false;

@@ -16,17 +16,18 @@
   imports = [
     # Common home config
     ./common.nix
-    ../programs/common
-
-    # Desktop and basic programs
-    ../desktop
-
-    # Additional programs
-    ../programs/vscodium
+    ../modules/home
   ];
 
-  desktop = {
-    mouse-speed = -1.0;
+  modules = {
+    alacritty.enable = true;
+    firefox.enable = true;
+    fonts.enable = true;
+    gde-stuff = {
+      enable = true;
+      mouse-speed = -1.0;
+    };
+    vscodium.enable = true;
   };
 
   home.packages = with pkgs; [
@@ -38,9 +39,6 @@
     mattermost
     citrix_workspace
     openssl
-
-    mutter
-    dconf-editor
 
     (pkgs.writeShellScriptBin "todo" ''
       ${pkgs.helix}/bin/hx ~/docs/todo.md

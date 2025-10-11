@@ -19,18 +19,23 @@
   outputs = { nixpkgs, nixpkgs-unstable, home-manager, firefox-addons, ... }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+      my-lib = import ./lib { inherit (nixpkgs) lib; };
+      pkgs = import nixpkgs {
+        inherit system;
+      };
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+      };
     in {
       homeConfigurations."flo" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./users/flo.nix ];
-        extraSpecialArgs = { inherit firefox-addons pkgs-unstable; };
+        extraSpecialArgs = { inherit firefox-addons pkgs-unstable my-lib; };
       };
       homeConfigurations."hart_fo" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./users/work.nix ];
-        extraSpecialArgs = { inherit firefox-addons; };
+        extraSpecialArgs = { inherit firefox-addons my-lib; };
       };
     };
 }
