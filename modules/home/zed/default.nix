@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs-unstable, config, lib, ... }:
 let cfg = config.modules.zed;
 in {
   options.modules.zed = {
@@ -6,10 +6,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [ pkgs.zed-editor ];
+    home.packages = [ pkgs-unstable.zed-editor ];
 
     home.file = {
-      ".config/zed/settings.json".source = ./settings.json;
+      # ".config/zed/settings.json".source = ./settings.json;
     };
   };
 }
