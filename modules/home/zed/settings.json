@@ -19,5 +19,8 @@
     "font_size": 13,
     "font_weight": 300
   },
-  "ui_font_family": "JetBrains Mono"
+  "ui_font_family": "JetBrains Mono",
+  "inlay_hints": {
+    "enabled": true
+  }
 }
