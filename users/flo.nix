@@ -87,7 +87,7 @@
 
     # mail
     # thunderbird
-    protonmail-desktop
+    tutanota-desktop
     # protonmail-bridge-gui
 
 
@@ -105,6 +105,7 @@
     pinentry
     rust-analyzer
   
+    openconnect
 
     ## network analysis
     # wireshark
