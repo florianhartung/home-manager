@@ -7,6 +7,58 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "use_system_prompts": true,
+  "inline_code_actions": true,
+  "notification_panel": {
+    "button": false
+  },
+  "show_edit_predictions": true,
+  "git_panel": {
+    "button": false
+  },
+  "outline_panel": {
+    "indent_guides": {
+      "show": "always"
+    },
+    "dock": "left",
+    "button": true
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "auto_update": false,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "agent": {
+    "enable_feedback": false,
+    "button": false,
+    "model_parameters": []
+  },
+  "search": {
+    "button": false
+  },
+  "status_bar": {
+    "cursor_position_button": true,
+    "active_language_button": false
+  },
+  "project_panel": {
+    "file_icons": true,
+    "entry_spacing": "comfortable",
+    "button": true
+  },
+  "debugger": {
+    "button": false
+  },
+  "title_bar": {
+    "show_sign_in": false,
+    "show_user_picture": false,
+    "show_onboarding_banner": false,
+    "show_project_items": true,
+    "show_branch_icon": false,
+    "show_branch_name": true
+  },
   "theme": "Tokyo Night Storm",
   "helix_mode": true,
   "icon_theme": "Material Icon Theme",
@@ -14,6 +66,7 @@
   "ui_font_size": 13,
   "buffer_font_size": 14,
   "terminal": {
+    "button": false,
     "dock": "right",
     "font_family": "JetBrains Mono",
     "font_size": 13,
@@ -43,12 +96,13 @@
   },
   "toolbar": {
     "breadcrumbs": true, // TODO
-    "quick_actions": true, // TODO
+    "quick_actions": false, // TODO
     "selections_menu": true, // TODO
     "agent_review": false,
     "code_actions": true // TODO
   },
   "diagnostics": {
+    "button": false,
     "inline": {
       "enabled": true,
       "update_debounce_ms": 150,
@@ -60,6 +114,12 @@
   "git": {
     // "git_gutter": null,
     // "gutter_debounce": null,
+    "branch_picker": {
+      "show_author_name": true
+    },
+    "blame": {
+      "show_avatar": false
+    },
     "inline_blame": {
       "enabled": true,
       "padding": 8
