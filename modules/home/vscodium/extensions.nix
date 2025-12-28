@@ -1,31 +1,31 @@
 pkgs: with pkgs.vscode-extensions; [
-  serayuzgur.crates
-  vadimcn.vscode-lldb
-  ms-python.black-formatter
-  tamasfe.even-better-toml
+
+  # Languages
+  tamasfe.even-better-toml # toml
+  ms-toolsai.jupyter # jupyter notebooks
+  mathiasfrohlich.kotlin # kotlin
+  jnoortheen.nix-ide # nix
+  ms-python.python # python
+  rust-lang.rust-analyzer # rust
+  myriad-dreamin.tinymist # typst
+  ecmel.vscode-html-css # html & css
+  bradlc.vscode-tailwindcss # tailwindcss
+  redhat.vscode-yaml # yaml
+
+  # Themes
   github.github-vscode-theme
-  ecmel.vscode-html-css
+
+  # Keybindings
   k--kato.intellij-idea-keybindings
-  ms-toolsai.jupyter
-  ms-python.python
-  charliermarsh.ruff
-  rust-lang.rust-analyzer
-  bradlc.vscode-tailwindcss
-  myriad-dreamin.tinymist 
   vscodevim.vim
-  tomoki1207.pdf
-  redhat.vscode-yaml
-  mkhl.direnv
-  streetsidesoftware.code-spell-checker
-  jnoortheen.nix-ide
-  mathiasfrohlich.kotlin
+
+  # Misc
+  streetsidesoftware.code-spell-checker # Spell checking
+  fill-labs.dependi # Dependency management for Rust, etc.
+  mkhl.direnv # Direnv for Nix shells
+  tomoki1207.pdf # PDF Viewer
+
 ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-  {
-    name = "vscode-openapi";
-    publisher = "42crunch";
-    version = "4.31.0";
-    sha256 = "sha256-ZS47eAKQBHB2ijNlMu1sVN/3U3vT7E7AMdC/9HN4uCg=";
-  }
   {
     name = "vscode-glsllint";
     publisher = "dtoplak";
@@ -61,5 +61,11 @@ pkgs: with pkgs.vscode-extensions; [
   #   publisher = "dorzey";
   #   version = "3.3.1";
   #   sha256 = "sha256-oRxITH6PWTvKvpyTwGDzEFJ4Hhjt5bP7FAm8moN5Jo8=";
+  # }
+  # {
+  #   name = "vscode-openapi";
+  #   publisher = "42crunch";
+  #   version = "4.31.0";
+  #   sha256 = "sha256-ZS47eAKQBHB2ijNlMu1sVN/3U3vT7E7AMdC/9HN4uCg=";
   # }
 ]

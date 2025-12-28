@@ -1,4 +1,4 @@
-{ pkgs, config, lib, firefox-addons, ... }@inputs:
+{ pkgs, pkgs-unstable, config, lib, firefox-addons, ... }@inputs:
 let cfg = config.modules.firefox;
 in {
   options.modules.firefox = {
@@ -8,6 +8,7 @@ in {
   config = lib.mkIf cfg.enable {
     programs.firefox = {
       enable = true;
+      package = pkgs-unstable.firefox;
       profiles.default = {
         # Only load bookmarks on initial setup
         # bookmarks = import ./bookmarks.nix;

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   home.username = "flo";
   home.homeDirectory = "/home/flo";
@@ -61,6 +61,8 @@
     enable = true;
   };
 
+  programs.java.enable = true;
+
   home.packages = with pkgs; [
     vlc
     yubioath-flutter
@@ -92,7 +94,7 @@
 
 
     goxel
-    atlauncher
+    pkgs-unstable.prismlauncher
     worldpainter
 
     quickemu
@@ -102,10 +104,12 @@
     jabref
     obsidian
     element-desktop
-    pinentry
+    pinentry-gnome3
     rust-analyzer
   
     openconnect
+    gdb
+    pkgs-unstable.teamspeak6-client
 
     ## network analysis
     # wireshark

@@ -37,7 +37,7 @@
     unzip
     btop
     mattermost
-    citrix_workspace
+    # citrix_workspace
     openssl
 
     (pkgs.writeShellScriptBin "todo" ''
