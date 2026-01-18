@@ -20,7 +20,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [ dconf-editor mutter ];
+    home.packages = with pkgs; [ dconf-editor mutter gnomeExtensions.tiling-shell ];
     home.sessionVariables = {
       # Required for some programs (e.g. VSCodium)
       ELECTRON_OZONE_PLATFORM_HINT="wayland";
@@ -54,6 +54,11 @@ in {
       "org/gnome/settings-daemon/plugins/power" = {
         sleep-inactive-ac-type = "nothing";
         sleep-inactive-battery-type = "nothing";
+      };
+      "org/gnome/shell" = {
+        enabled-extensions = [
+          "tilingshell@ferrarodomenico.com"
+        ];
       };
     };
   };
