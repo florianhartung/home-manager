@@ -14,9 +14,13 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    kak-tree-sitter-helix = {
+      url = "github:igor-ramazanov/kak-tree-sitter-helix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, firefox-addons, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, firefox-addons, kak-tree-sitter-helix, ... }:
     let
       system = "x86_64-linux";
       my-lib = import ./lib { inherit (nixpkgs) lib; };
@@ -30,7 +34,10 @@
     in {
       homeConfigurations."flo" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./users/flo.nix ];
+        modules = [
+          kak-tree-sitter-helix.homeManagerModules.${system}.kak-tree-sitter-helix
+          ./users/flo.nix
+        ];
         extraSpecialArgs = { inherit firefox-addons pkgs-unstable my-lib; };
       };
       homeConfigurations."hart_fo" = home-manager.lib.homeManagerConfiguration {

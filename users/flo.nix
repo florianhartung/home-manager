@@ -34,6 +34,7 @@
       enable = true;
       mouse-speed = 0.58;
     };
+    kakoune.enable = true;
     vscodium.enable = true;
     zed.enable = true;
   };
@@ -101,7 +102,6 @@
 
     keepassxc
 
-    jabref
     obsidian
     element-desktop
     pinentry-gnome3
