@@ -35,6 +35,8 @@
     vscodium.enable = true;
   };
 
+  programs.git.settings.user.email = "florian.hartung@dlr.de";
+
   home.packages = with pkgs; [
     yubioath-flutter
     nixd

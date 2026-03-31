@@ -6,7 +6,7 @@
     settings = {
       user = {
         name = "Florian Hartung";
-        email = "60144801+florianhartung@users.noreply.github.com";
+        email = lib.mkDefault "60144801+florianhartung@users.noreply.github.com";
       };
       extraConfig = {
         init.defaultBranch = "main";
