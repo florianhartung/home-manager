@@ -41,57 +41,55 @@
       firefox-addons,
       kak-tree-sitter-helix,
     }:
-    flake-utils.lib.eachSystem [ "x86_64-linux" ] (
-      system:
-      let
-        my-lib = import ./lib { inherit (nixpkgs) lib; };
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ devshell.overlays.default ];
-        };
-        pkgs-unstable = import nixpkgs-unstable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-      in
-      {
-        homeConfigurations."flo" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            kak-tree-sitter-helix.homeManagerModules.${system}.kak-tree-sitter-helix
-            ./users/flo.nix
+    let
+      system = "x86_64-linux";
+      my-lib = import ./lib { inherit (nixpkgs) lib; };
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ devshell.overlays.default ];
+      };
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+    in
+    {
+      homeConfigurations."flo" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          kak-tree-sitter-helix.homeManagerModules.${system}.kak-tree-sitter-helix
+          ./users/flo.nix
+        ];
+        extraSpecialArgs = { inherit firefox-addons pkgs-unstable my-lib; };
+      };
+      homeConfigurations."hart_fo" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./users/work.nix ];
+        extraSpecialArgs = { inherit firefox-addons my-lib; };
+      };
+
+      devShells.${system}.default = (
+        pkgs.devshell.mkShell {
+          name = "dev";
+
+          packages = with pkgs; [
+            nixd # Nix LSP
           ];
-          extraSpecialArgs = { inherit firefox-addons pkgs-unstable my-lib; };
-        };
-        homeConfigurations."hart_fo" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./users/work.nix ];
-          extraSpecialArgs = { inherit firefox-addons my-lib; };
-        };
 
-        devShells.default = (
-          pkgs.devshell.mkShell {
-            name = "dev";
+          imports = [ "${devshell}/extra/git/hooks.nix" ];
 
-            packages = with pkgs; [
-              nixd # Nix LSP
-            ];
+          git.hooks = {
+            enable = true;
+            pre-commit.text = "nix flake check";
+          };
+        }
+      );
 
-            imports = [ "${devshell}/extra/git/hooks.nix" ];
+      formatter.${system} = treefmtEval.config.build.wrapper;
 
-            git.hooks = {
-              enable = true;
-              pre-commit.text = "nix flake check";
-            };
-          }
-        );
-
-        formatter = treefmtEval.config.build.wrapper;
-
-        checks = {
-          formatting = treefmtEval.config.build.check self;
-        };
-      }
-    );
+      checks.${system} = {
+        formatting = treefmtEval.config.build.check self;
+      };
+    };
 }
