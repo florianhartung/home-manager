@@ -1,6 +1,15 @@
-{ pkgs, my-lib, lib, pkgs-unstable, config, ... }:
-let cfg = config.modules.vscodium;
-in {
+{
+  pkgs,
+  my-lib,
+  lib,
+  pkgs-unstable,
+  config,
+  ...
+}:
+let
+  cfg = config.modules.vscodium;
+in
+{
   options.modules.vscodium = {
     enable = lib.mkEnableOption "vscodium";
   };

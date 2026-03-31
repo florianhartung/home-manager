@@ -1,6 +1,15 @@
-{ pkgs, pkgs-unstable, config, lib, firefox-addons, ... }@inputs:
-let cfg = config.modules.firefox;
-in {
+{
+  pkgs,
+  pkgs-unstable,
+  config,
+  lib,
+  firefox-addons,
+  ...
+}@inputs:
+let
+  cfg = config.modules.firefox;
+in
+{
   options.modules.firefox = {
     enable = lib.mkEnableOption "firefox";
   };

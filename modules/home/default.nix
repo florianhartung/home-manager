@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
     ./alacritty.nix
     ./common # todo split this into separate modules

@@ -3,7 +3,7 @@
   home.username = "flo";
   home.homeDirectory = "/home/flo";
   home.stateVersion = "25.05"; # shouldn't be changed ever
-  
+
   nixpkgs.config.allowUnfree = true;
 
   # programs.kitty.enable = true;
@@ -46,7 +46,7 @@
       name = "Looking Glass (fix)";
       exec = "__NV_DISABLE_EXPLICIT_SYNC=1 looking-glass-client";
       terminal = false;
-      categories = ["System"];
+      categories = [ "System" ];
 
       # SingleMainWindow = true;
       # Icon="looking-glass";
@@ -93,7 +93,6 @@
     tutanota-desktop
     # protonmail-bridge-gui
 
-
     goxel
     pkgs-unstable.prismlauncher
     worldpainter
@@ -106,7 +105,7 @@
     element-desktop
     pinentry-gnome3
     rust-analyzer
-  
+
     openconnect
     gdb
     pkgs-unstable.teamspeak6-client
@@ -126,4 +125,3 @@
     '')
   ];
 }
-

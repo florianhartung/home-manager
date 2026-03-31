@@ -1,4 +1,6 @@
-pkgs: with pkgs.vscode-extensions; [
+pkgs:
+with pkgs.vscode-extensions;
+[
 
   # Languages
   tamasfe.even-better-toml # toml
@@ -25,7 +27,8 @@ pkgs: with pkgs.vscode-extensions; [
   mkhl.direnv # Direnv for Nix shells
   tomoki1207.pdf # PDF Viewer
 
-] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+]
+++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
   {
     name = "vscode-glsllint";
     publisher = "dtoplak";

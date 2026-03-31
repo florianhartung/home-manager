@@ -1,6 +1,13 @@
-{ pkgs, lib, config, ... }:
-let cfg = config.modules.alacritty;
-in {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+let
+  cfg = config.modules.alacritty;
+in
+{
   options.modules.alacritty = {
     enable = lib.mkEnableOption "alacritty";
   };
@@ -11,7 +18,9 @@ in {
       terminal.shell = "${pkgs.zellij}/bin/zellij";
       window.opacity = 0.85;
       font = {
-        normal = { family = "Jetbrains Mono"; };
+        normal = {
+          family = "Jetbrains Mono";
+        };
         size = 13;
         # normal = { family = "Unifont"; };
         # size = 30;

@@ -1,6 +1,13 @@
-{ pkgs-unstable, config, lib, ... }:
-let cfg = config.modules.zed;
-in {
+{
+  pkgs-unstable,
+  config,
+  lib,
+  ...
+}:
+let
+  cfg = config.modules.zed;
+in
+{
   options.modules.zed = {
     enable = lib.mkEnableOption "zed editor";
   };

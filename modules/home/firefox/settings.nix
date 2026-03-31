@@ -1,8 +1,13 @@
 # For info how to use, see:
 # <https://searchfox.org/mozilla-release/source/browser/app/profile/firefox.js>
 
-{ lib, my-lib, config, ...}:
-let 
+{
+  lib,
+  my-lib,
+  config,
+  ...
+}:
+let
   flatten-nested-sets = my-lib.flatten-nested-sets;
 in
 {
@@ -55,8 +60,8 @@ in
     currentVersion = 20;
     newElementCount = 8;
   };
-} // 
-flatten-nested-sets {
+}
+// flatten-nested-sets {
   "browser.newtabpage.activity-stream" = {
     "showSponsoredTopSites" = false;
     "showSponsored" = false;

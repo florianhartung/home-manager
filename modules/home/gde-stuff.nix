@@ -1,8 +1,14 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 with lib.hm.gvariant;
 let
   cfg = config.modules.gde-stuff;
-in {
+in
+{
   options.modules.gde-stuff = {
     enable = lib.mkEnableOption "configuration stuff for gnome desktop environment";
 
@@ -20,13 +26,17 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [ dconf-editor mutter gnomeExtensions.tiling-shell ];
+    home.packages = with pkgs; [
+      dconf-editor
+      mutter
+      gnomeExtensions.tiling-shell
+    ];
     home.sessionVariables = {
       # Required for some programs (e.g. VSCodium)
-      ELECTRON_OZONE_PLATFORM_HINT="wayland";
+      ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     };
     xsession.enable = true;
-  
+
     dconf.settings = {
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
@@ -34,15 +44,26 @@ in {
       };
       "org/gnome/desktop/peripherals/mouse" = {
         accel-profile = "flat";
-        speed = (assert cfg.mouse-speed > -1.0 && cfg.mouse-speed < 1.0; cfg.mouse-speed);
+        speed = (
+          assert cfg.mouse-speed > -1.0 && cfg.mouse-speed < 1.0;
+          cfg.mouse-speed
+        );
       };
       "org/gnome/desktop/peripherals/touchpad" = {
         tap-to-click = true;
         tap-and-drag-lock = true;
       };
       "org/gnome/desktop/input-sources" = {
-        sources = [ (mkTuple ["xkb" "us+altgr-intl"]) ];
-        xkb-options = [ "terminate:ctrl_alt_bksp" "caps:escape" ];
+        sources = [
+          (mkTuple [
+            "xkb"
+            "us+altgr-intl"
+          ])
+        ];
+        xkb-options = [
+          "terminate:ctrl_alt_bksp"
+          "caps:escape"
+        ];
       };
       "org/gnome/desktop/applications/terminal" = {
         exec = cfg.terminal;

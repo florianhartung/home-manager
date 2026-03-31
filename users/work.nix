@@ -1,9 +1,14 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{
+  config,
+  pkgs,
+  pkgs-unstable,
+  ...
+}:
 {
   home.username = "flo";
   home.homeDirectory = "/home/flo";
   home.stateVersion = "25.05"; # shouldn't be changed ever
-  
+
   nixpkgs.config.allowUnfree = true;
 
   # programs.kitty.enable = true;
@@ -55,7 +60,6 @@
     EDITOR = "${pkgs.helix}/bin/hx";
 
     # For VSCodium
-    ELECTRON_OZONE_PLATFORM_HINT="wayland";
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
   };
 }
-
