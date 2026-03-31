@@ -41,14 +41,19 @@
     }:
     let
       system = "x86_64-linux";
-      my-lib = import ./lib { inherit (nixpkgs) lib; };
+      call-my-lib = pkgs: pkgs.callPackage ./pkgs/my-lib;
+      my-lib-overlay = (final: prev: { my-lib = call-my-lib pkgs; });
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ devshell.overlays.default ];
+        overlays = [
+          devshell.overlays.default
+          my-lib-overlay
+        ];
       };
       pkgs-unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
+        overlays = [ my-lib-overlay ];
       };
       treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
     in
@@ -59,12 +64,12 @@
           kak-tree-sitter-helix.homeManagerModules.${system}.kak-tree-sitter-helix
           ./users/flo.nix
         ];
-        extraSpecialArgs = { inherit firefox-addons pkgs-unstable my-lib; };
+        extraSpecialArgs = { inherit firefox-addons pkgs-unstable; };
       };
       homeConfigurations."hart_fo" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./users/work.nix ];
-        extraSpecialArgs = { inherit firefox-addons my-lib pkgs-unstable; };
+        extraSpecialArgs = { inherit firefox-addons pkgs-unstable; };
       };
 
       devShells.${system}.default = (

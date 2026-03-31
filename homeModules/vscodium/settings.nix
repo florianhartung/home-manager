@@ -1,8 +1,5 @@
-{ my-lib, pkgs-unstable, ... }:
-let
-  flatten-nested-sets = my-lib.flatten-nested-sets;
-in
-flatten-nested-sets {
+{ pkgs-unstable, ... }:
+pkgs-unstable.my-lib.flatten-nested-sets {
   "terminal" = {
     "integrated.defaultProfile.linux" = "fish";
     "integrated.allowedLinkSchemes" = [

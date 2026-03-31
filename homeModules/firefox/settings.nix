@@ -3,13 +3,10 @@
 
 {
   lib,
-  my-lib,
+  pkgs,
   config,
   ...
 }:
-let
-  flatten-nested-sets = my-lib.flatten-nested-sets;
-in
 {
   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
   "layout.css.prefers-color-scheme.content-override" = 0;
@@ -61,7 +58,7 @@ in
     newElementCount = 8;
   };
 }
-// flatten-nested-sets {
+// pkgs.my-lib.flatten-nested-sets {
   "browser.newtabpage.activity-stream" = {
     "showSponsoredTopSites" = false;
     "showSponsored" = false;

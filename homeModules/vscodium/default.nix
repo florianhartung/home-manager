@@ -1,6 +1,5 @@
 {
   pkgs,
-  my-lib,
   lib,
   pkgs-unstable,
   config,
@@ -21,7 +20,7 @@ in
       mutableExtensionsDir = false;
       profiles.default = {
         extensions = import ./extensions.nix pkgs;
-        userSettings = import ./settings.nix { inherit pkgs-unstable my-lib; };
+        userSettings = import ./settings.nix { inherit pkgs-unstable; };
         keybindings = import ./keybindings.nix;
       };
     };
