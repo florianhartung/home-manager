@@ -14,9 +14,5 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = [ pkgs-unstable.zed-editor ];
-
-    home.file = {
-      # ".config/zed/settings.json".source = ./settings.json;
-    };
   };
 }

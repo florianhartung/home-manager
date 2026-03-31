@@ -13,6 +13,7 @@ with pkgs.vscode-extensions;
   ecmel.vscode-html-css # html & css
   bradlc.vscode-tailwindcss # tailwindcss
   redhat.vscode-yaml # yaml
+  valentjn.vscode-ltex # grammar checker for latex (might work for Typst aswell)
 
   # Themes
   github.github-vscode-theme

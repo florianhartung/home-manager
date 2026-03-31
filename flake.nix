@@ -17,7 +17,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils.url = "github:numtide/flake-utils";
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -36,7 +35,6 @@
       nixpkgs-unstable,
       home-manager,
       devshell,
-      flake-utils,
       treefmt-nix,
       firefox-addons,
       kak-tree-sitter-helix,
@@ -66,7 +64,7 @@
       homeConfigurations."hart_fo" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./users/work.nix ];
-        extraSpecialArgs = { inherit firefox-addons my-lib; };
+        extraSpecialArgs = { inherit firefox-addons my-lib pkgs-unstable; };
       };
 
       devShells.${system}.default = (

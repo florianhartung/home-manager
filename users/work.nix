@@ -26,6 +26,7 @@
       mouse-speed = 0.58;
     };
     vscodium.enable = true;
+    zed.enable = true;
   };
 
   programs.git.settings.user.email = "florian.hartung@dlr.de";
