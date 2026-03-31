@@ -1,4 +1,4 @@
-{ .. }:
+{ lib, ... }:
 {
   # Flattens one or more nested sets to one flat set, with new flattened keys.
   #

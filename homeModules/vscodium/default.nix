@@ -20,7 +20,7 @@ in
       mutableExtensionsDir = false;
       profiles.default = {
         extensions = import ./extensions.nix pkgs;
-        userSettings = import ./settings.nix { inherit pkgs-unstable; };
+        userSettings = import ./settings.nix { inherit pkgs pkgs-unstable; };
         keybindings = import ./keybindings.nix;
       };
     };

@@ -1,5 +1,5 @@
-{ pkgs-unstable, ... }:
-pkgs-unstable.my-lib.flatten-nested-sets {
+{ pkgs, pkgs-unstable, ... }:
+(pkgs.my-lib.flatten-nested-sets {
   "terminal" = {
     "integrated.defaultProfile.linux" = "fish";
     "integrated.allowedLinkSchemes" = [
@@ -61,4 +61,4 @@ pkgs-unstable.my-lib.flatten-nested-sets {
   "typst-lsp.exportPdf" = "never";
   "vim.useSystemClipboard" = true;
   "rust-analyzer.server.path" = "${pkgs-unstable.rust-analyzer}/bin/rust-analyzer";
-}
+})
