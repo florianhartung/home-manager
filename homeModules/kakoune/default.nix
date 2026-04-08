@@ -18,7 +18,7 @@ in
       "kak-conf" = "kak -n -e 'source ~/.config/home-manager/modules/home/kakoune/kakrc.kak'";
     };
 
-    programs.kak-tree-sitter-helix.enable = true;
+    # programs.kak-tree-sitter-helix.enable = true;
     programs.kakoune = {
       enable = true;
       config = null;
