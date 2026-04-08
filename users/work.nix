@@ -38,7 +38,7 @@
     unzip
     btop
     mattermost-desktop
-    citrix_workspace
+    # citrix_workspace # TODO broken
     openssl
     thunderbird
 
