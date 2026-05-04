@@ -110,6 +110,8 @@
     gdb
     pkgs-unstable.teamspeak6-client
 
+    keymapp
+
     ## network analysis
     # wireshark
     # ettercap
