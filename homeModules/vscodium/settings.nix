@@ -60,5 +60,7 @@ project-lib.utils.flattenNestedSets {
   "typescript.updateImportsOnFileMove.enabled" = "never";
   "typst-lsp.exportPdf" = "never";
   "vim.useSystemClipboard" = true;
+  "vim.textwidth" = 100;
   "rust-analyzer.server.path" = "${pkgs-unstable.rust-analyzer}/bin/rust-analyzer";
+
 }
