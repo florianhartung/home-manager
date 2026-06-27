@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  pkgs-unstable,
   ...
 }:
 with lib.hm.gvariant;
@@ -28,8 +29,8 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       dconf-editor
-      mutter
-      gnomeExtensions.tiling-shell
+      pkgs-unstable.mutter
+      pkgs-unstable.gnomeExtensions.tiling-shell
     ];
     home.sessionVariables = {
       # Required for some programs (e.g. VSCodium)
