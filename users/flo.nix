@@ -108,7 +108,6 @@
 
     openconnect
     gdb
-    pkgs-unstable.teamspeak6-client
 
     keymapp
 
