@@ -29,7 +29,7 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       dconf-editor
-      pkgs-unstable.mutter
+      # pkgs-unstable.mutter
       pkgs-unstable.gnomeExtensions.tiling-shell
     ];
     home.sessionVariables = {
@@ -81,6 +81,7 @@ in
         enabled-extensions = [
           "tilingshell@ferrarodomenico.com"
         ];
+        disable-user-extensions = false;
       };
     };
   };

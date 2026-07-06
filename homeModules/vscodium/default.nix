@@ -15,9 +15,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.vscode = {
+    programs.vscodium = {
       enable = true;
-      package = pkgs.vscodium;
       mutableExtensionsDir = false;
       profiles.default = {
         extensions = import ./extensions.nix pkgs;

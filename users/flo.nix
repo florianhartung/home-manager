@@ -73,7 +73,7 @@
     nixd
 
     ## virtualization
-    docker
+    # docker
     wasmedge
 
     ## utils
