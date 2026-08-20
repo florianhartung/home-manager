@@ -124,6 +124,7 @@
     gdb
 
     keymapp
+    valgrind
 
     ## network analysis
     # wireshark
