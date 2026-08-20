@@ -1,4 +1,9 @@
-{ pkgs, pkgs-unstable, ... }:
+{
+  pkgs,
+  pkgs-unstable,
+  lib,
+  ...
+}:
 {
   home.username = "flo";
   home.homeDirectory = "/home/flo";
@@ -63,6 +68,15 @@
   };
 
   programs.java.enable = true;
+
+  # Workaround: Sometimes gnome-volume-control crashes, which causes this to be set to true.
+  home.activation.unset-disable-user-extensions = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run ${pkgs.dconf}/bin/dconf write /org/gnome/shell/disable-user-extensions false
+  '';
+
+  services.easyeffects = {
+    enable = true;
+  };
 
   home.packages = with pkgs; [
     vlc
