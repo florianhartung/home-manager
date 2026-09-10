@@ -46,6 +46,7 @@
     dconf-editor
     wl-clipboard
     ltex-ls
+    element-desktop
 
     (pkgs.writeShellScriptBin "todo" ''
       ${pkgs.helix}/bin/hx ~/docs/todo.md

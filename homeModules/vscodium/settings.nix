@@ -2,6 +2,7 @@
 project-lib.utils.flattenNestedSets {
   "terminal" = {
     "integrated.defaultProfile.linux" = "fish";
+    "integrated.fontSize" = 12;
     "integrated.allowedLinkSchemes" = [
       "file"
       "http"
@@ -16,6 +17,7 @@ project-lib.utils.flattenNestedSets {
   "editor" = {
     "fontFamiliy" = "'JetBrainsMono Nerd Font Mono Light', Consolas, 'Courier New', monospace";
     "fontLigatures" = true;
+    "fontSize" = 12;
     "minimap.enabled" = false;
   };
 
@@ -61,6 +63,6 @@ project-lib.utils.flattenNestedSets {
   "typst-lsp.exportPdf" = "never";
   "vim.useSystemClipboard" = true;
   "vim.textwidth" = 100;
-  "rust-analyzer.server.path" = "${pkgs-unstable.rust-analyzer}/bin/rust-analyzer";
+  "rust-analyzer.server.path" = "rust-analyzer";
 
 }
