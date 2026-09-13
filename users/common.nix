@@ -1,7 +1,5 @@
 {
   config,
-  lib,
-  pkgs,
   ...
 }:
 {
@@ -9,15 +7,15 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  home.sessionVariables = { };
-
   # default directories are ugly
   xdg.enable = true;
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
-    documents = "docs";
-    download = "downloads";
+    setSessionVariables = true;
+
+    documents = "${config.home.homeDirectory}/docs";
+    download = "${config.home.homeDirectory}/downloads";
     desktop = null;
     music = null;
     pictures = null;

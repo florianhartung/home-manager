@@ -18,6 +18,7 @@ in
     programs.firefox = {
       enable = true;
       package = pkgs-unstable.firefox;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
       profiles.default = {
         # Only load bookmarks on initial setup
         # bookmarks = import ./bookmarks.nix;
