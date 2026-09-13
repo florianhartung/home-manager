@@ -1,11 +1,9 @@
 {
   pkgs,
-  my-lib,
   lib,
-  pkgs-unstable,
   config,
   ...
-}:
+}@inputs:
 let
   cfg = config.modules.vscodium;
 in
@@ -20,7 +18,7 @@ in
       mutableExtensionsDir = false;
       profiles.default = {
         extensions = import ./extensions.nix pkgs;
-        userSettings = import ./settings.nix { inherit pkgs-unstable my-lib; };
+        userSettings = import ./settings.nix inputs;
         keybindings = import ./keybindings.nix;
       };
     };

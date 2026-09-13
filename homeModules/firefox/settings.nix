@@ -2,15 +2,11 @@
 # <https://searchfox.org/mozilla-release/source/browser/app/profile/firefox.js>
 
 {
-  lib,
-  my-lib,
+  project-lib,
   config,
   ...
 }:
-let
-  flatten-nested-sets = my-lib.flatten-nested-sets;
-in
-{
+project-lib.utils.flattenNestedSets {
   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
   "layout.css.prefers-color-scheme.content-override" = 0;
 
@@ -61,7 +57,7 @@ in
     newElementCount = 8;
   };
 }
-// flatten-nested-sets {
+// project-lib.utils.flattenNestedSets {
   "browser.newtabpage.activity-stream" = {
     "showSponsoredTopSites" = false;
     "showSponsored" = false;

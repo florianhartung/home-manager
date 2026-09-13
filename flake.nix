@@ -40,8 +40,10 @@
       kak-tree-sitter-helix,
     }:
     let
+      lib = nixpkgs.lib;
+      project-lib = import ./lib lib;
+
       system = "x86_64-linux";
-      my-lib = import ./lib { inherit (nixpkgs) lib; };
       pkgs = import nixpkgs {
         inherit system;
         overlays = [
@@ -61,12 +63,12 @@
           kak-tree-sitter-helix.homeManagerModules.${system}.kak-tree-sitter-helix
           ./users/flo.nix
         ];
-        extraSpecialArgs = { inherit firefox-addons pkgs-unstable my-lib; };
+        extraSpecialArgs = { inherit firefox-addons pkgs-unstable project-lib; };
       };
       homeConfigurations."hart_fo" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./users/work.nix ];
-        extraSpecialArgs = { inherit firefox-addons my-lib pkgs-unstable; };
+        extraSpecialArgs = { inherit firefox-addons pkgs-unstable project-lib; };
       };
 
       devShells.${system}.default = (
