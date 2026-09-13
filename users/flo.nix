@@ -19,10 +19,7 @@
   #   options = [ "terminate:ctrl_alt_bksp" "caps:escape" ];
   # };
 
-  imports = [
-    ./common.nix
-    ../modules/home
-  ];
+  imports = [ ../modules/home ];
 
   home.shellAliases = {
     cdg = "cd ~/git";
@@ -31,6 +28,8 @@
   };
 
   modules = {
+    base.enable = true;
+
     alacritty.enable = true;
     discord.enable = true;
     firefox.enable = true;

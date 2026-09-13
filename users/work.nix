@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  pkgs-unstable,
   ...
 }:
 {
@@ -12,12 +10,12 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    # Common home config
-    ./common.nix
     ../modules/home
   ];
 
   modules = {
+    base.enable = true;
+
     alacritty.enable = true;
     firefox.enable = true;
     fonts.enable = true;

@@ -2,6 +2,7 @@
 {
   imports = [
     ./alacritty.nix
+    ./base.nix # todo split up and make a base preset
     ./common # todo split this into separate modules
     ./discord
     ./firefox
