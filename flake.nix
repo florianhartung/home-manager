@@ -2,8 +2,7 @@
   description = "nixos & home-manager configurations";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # TODO remove
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # for devshell
@@ -53,11 +52,9 @@
       project-lib = import ./lib lib;
 
       system = "x86_64-linux";
-      overlays = [
-        devshell.overlays.default
-      ];
       pkgs = import nixpkgs {
-        inherit system overlays;
+        inherit system;
+        overlays = [ devshell.overlays.default ];
         config.allowUnfree = true;
       };
       pkgs-unstable = import nixpkgs-unstable {
@@ -72,7 +69,6 @@
           inherit system;
           modules = [
             ./hosts/desktop/configuration.nix
-            { nixpkgs.overlays = overlays; }
           ];
           specialArgs = { inherit inputs; };
         };
@@ -86,15 +82,17 @@
           modules = [ ./hosts/nixos-nas/configuration.nix ];
         };
       };
-      homeConfigurations."flo" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./users/flo.nix ];
-        extraSpecialArgs = { inherit inputs pkgs-unstable project-lib; };
-      };
-      homeConfigurations."hart_fo" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./users/work.nix ];
-        extraSpecialArgs = { inherit inputs pkgs-unstable project-lib; };
+      homeConfigurations = {
+        "flo" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./users/flo.nix ];
+          extraSpecialArgs = { inherit inputs pkgs-unstable project-lib; };
+        };
+        "hart_fo" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./users/work.nix ];
+          extraSpecialArgs = { inherit inputs pkgs-unstable project-lib; };
+        };
       };
 
       devShells.${system}.default = (
