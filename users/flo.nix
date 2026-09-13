@@ -21,7 +21,7 @@
 
   imports = [
     ./common.nix
-    ../homeModules
+    ../modules/home
   ];
 
   home.shellAliases = {

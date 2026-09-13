@@ -14,7 +14,7 @@
   imports = [
     # Common home config
     ./common.nix
-    ../homeModules
+    ../modules/home
   ];
 
   modules = {
