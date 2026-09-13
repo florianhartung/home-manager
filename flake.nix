@@ -1,14 +1,12 @@
 {
-  description = "Home Manager configuration of flo";
+  description = "nixos & home-manager configurations";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-26.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # TODO remove
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # for devshell
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,6 +16,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # for NixOS
+    impermanence.url = "github:nix-community/impermanence";
+    programsdb = {
+      url = "github:wamserma/flake-programs-sqlite";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.1.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # for home manager
+    home-manager = {
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,11 +53,35 @@
       project-lib = import ./lib lib;
 
       system = "x86_64-linux";
+      overlays = [
+        devshell.overlays.default
+        (final: prev: {
+          steam = prev.steam.override {
+            extraPkgs =
+              pkgs: with pkgs; [
+                xorg.libXcursor
+                xorg.libXi
+                xorg.libXinerama
+                xorg.libXScrnSaver
+                xorg.xkbcomp
+                libpng
+                libpulseaudio
+                libvorbis
+                stdenv.cc.cc.lib
+                libkrb5
+                keyutils
+              ];
+          };
+          gamescope = prev.gamescope.overrideAttrs (old: {
+            patches = (old.patches or [ ]) ++ [
+              ./gamescope-mouse-sensitivity.patch
+            ];
+          });
+        })
+      ];
       pkgs = import nixpkgs {
-        inherit system;
-        overlays = [
-          devshell.overlays.default
-        ];
+        inherit system overlays;
+        config.allowUnfree = true;
       };
       pkgs-unstable = import nixpkgs-unstable {
         inherit system;
@@ -52,6 +90,25 @@
       treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
     in
     {
+      nixosConfigurations = {
+        desktop = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/desktop/configuration.nix
+            { nixpkgs.overlays = overlays; }
+          ];
+          specialArgs = { inherit inputs; };
+        };
+        homebase = lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/homebase/configuration.nix ];
+          specialArgs = { inherit inputs; };
+        };
+        nixos-nas = lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/nixos-nas/configuration.nix ];
+        };
+      };
       homeConfigurations."flo" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./users/flo.nix ];
