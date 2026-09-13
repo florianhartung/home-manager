@@ -14,7 +14,7 @@
   imports = [
     inputs.lanzaboote.nixosModules.lanzaboote
     ./hardware-configuration.nix
-    ../../nixosModules
+    ../../modules/nixos
   ];
 
   base.enable = true;

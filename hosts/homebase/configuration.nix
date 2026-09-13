@@ -12,7 +12,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../nixosModules
+    ../../modules/nixos
   ];
 
   base.enable = true;
