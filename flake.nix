@@ -55,29 +55,6 @@
       system = "x86_64-linux";
       overlays = [
         devshell.overlays.default
-        (final: prev: {
-          steam = prev.steam.override {
-            extraPkgs =
-              pkgs: with pkgs; [
-                xorg.libXcursor
-                xorg.libXi
-                xorg.libXinerama
-                xorg.libXScrnSaver
-                xorg.xkbcomp
-                libpng
-                libpulseaudio
-                libvorbis
-                stdenv.cc.cc.lib
-                libkrb5
-                keyutils
-              ];
-          };
-          gamescope = prev.gamescope.overrideAttrs (old: {
-            patches = (old.patches or [ ]) ++ [
-              ./gamescope-mouse-sensitivity.patch
-            ];
-          });
-        })
       ];
       pkgs = import nixpkgs {
         inherit system overlays;

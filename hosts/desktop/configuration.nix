@@ -261,6 +261,33 @@
   # boot.kernelParams = [ "module_blacklist=amdgpu" ];
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  # TODO make steam module with this stuff
+  nixpkgs.overlays = [
+    (final: prev: {
+      steam = prev.steam.override {
+        extraPkgs =
+          pkgs: with pkgs; [
+            xorg.libXcursor
+            xorg.libXi
+            xorg.libXinerama
+            xorg.libXScrnSaver
+            xorg.xkbcomp
+            libpng
+            libpulseaudio
+            libvorbis
+            stdenv.cc.cc.lib
+            libkrb5
+            keyutils
+          ];
+      };
+      gamescope = prev.gamescope.overrideAttrs (old: {
+        patches = (old.patches or [ ]) ++ [
+          ./gamescope-mouse-sensitivity.patch
+        ];
+      });
+    })
+  ];
+
   programs.steam = {
     enable = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];
