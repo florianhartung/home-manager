@@ -44,7 +44,9 @@
       my-lib = import ./lib { inherit (nixpkgs) lib; };
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ devshell.overlays.default ];
+        overlays = [
+          devshell.overlays.default
+        ];
       };
       pkgs-unstable = import nixpkgs-unstable {
         inherit system;

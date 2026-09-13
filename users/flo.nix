@@ -126,6 +126,8 @@
     keymapp
     valgrind
 
+    pkgs-unstable.zulip # electron on stable is insecure (version is EOL)
+
     ## network analysis
     # wireshark
     # ettercap
