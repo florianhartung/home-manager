@@ -3,9 +3,10 @@
   pkgs-unstable,
   config,
   lib,
-  firefox-addons,
+  inputs,
+  project-lib,
   ...
-}@inputs:
+}:
 let
   cfg = config.modules.firefox;
 in
@@ -22,8 +23,11 @@ in
       profiles.default = {
         # Only load bookmarks on initial setup
         # bookmarks = import ./bookmarks.nix;
-        settings = import ./settings.nix inputs;
-        extensions.packages = import ./extensions.nix { inherit firefox-addons pkgs; };
+        settings = import ./settings.nix { inherit config project-lib; };
+        extensions.packages = import ./extensions.nix {
+          inherit pkgs;
+          inherit (inputs) firefox-addons;
+        };
         search = {
           engines = import ./search-engines.nix;
           force = true;

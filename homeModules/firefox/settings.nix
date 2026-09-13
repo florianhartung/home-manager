@@ -4,7 +4,6 @@
 {
   project-lib,
   config,
-  ...
 }:
 project-lib.utils.flattenNestedSets {
   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;

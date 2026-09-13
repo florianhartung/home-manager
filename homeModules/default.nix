@@ -7,7 +7,6 @@
     ./firefox
     ./fonts.nix
     ./gde-stuff.nix
-    ./kakoune
     ./rustic.nix
     ./vscodium
     ./zed
