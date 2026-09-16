@@ -125,6 +125,7 @@
     valgrind
 
     pkgs-unstable.zulip # electron on stable is insecure (version is EOL)
+    rssguard
 
     ## network analysis
     # wireshark
