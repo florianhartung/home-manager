@@ -46,6 +46,8 @@
     ltex-ls
     element-desktop
 
+    obsidian
+
     (pkgs.writeShellScriptBin "todo" ''
       ${pkgs.helix}/bin/hx ~/docs/todo.md
     '')
