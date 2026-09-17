@@ -19,6 +19,18 @@
 
   base.enable = true;
 
+  # TODO: Move this to a generic reusable module
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    persistent = true; # never skip gc when system was powered down
+    randomizedDelaySec = "3min"; # prevent thundering herd problem after boot
+    # TODO: Use NixOS Generations Trimmer script to delete everything older than
+    #       30 days or anything exceeding the limit of 3 generations max.
+    #       to prevent the /boot partition from running out of space.
+    options = "--delete-older-than 30d";
+  };
+
   impermanence = {
     enable = true;
     devPath = "/dev/nvme0n1p5";
