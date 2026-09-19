@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   cfg = config.modules.base;
 in
@@ -11,6 +16,10 @@ in
     programs.home-manager.enable = true;
     programs.direnv.enable = true;
     programs.direnv.nix-direnv.enable = true;
+
+    home.packages = with pkgs; [
+      wl-clipboard
+    ];
 
     xdg.enable = true;
     xdg.userDirs = {
