@@ -70,12 +70,12 @@
           modules = [
             ./hosts/desktop/configuration.nix
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs pkgs-unstable; };
         };
         homebase = lib.nixosSystem {
           inherit system;
           modules = [ ./hosts/homebase/configuration.nix ];
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs pkgs-unstable; };
         };
         nixos-nas = lib.nixosSystem {
           inherit system;

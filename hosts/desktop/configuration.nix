@@ -53,6 +53,9 @@
     ];
   };
 
+  # development gitlab instance
+  modules.gitlab.enable = true;
+
   fileSystems."/".options = [
     "compress=zstd"
     "noatime"
