@@ -148,6 +148,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # avahi required for service discovery for airplay
+  services.avahi.enable = true;
+
   # Enable sound with pipewire.
   security.rtkit.enable = true;
   services.pipewire = {
@@ -157,6 +160,24 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
+
+    # Airplay
+    # opens UDP ports 6001-6002
+    raopOpenFirewall = true;
+    extraConfig.pipewire = {
+      "10-airplay" = {
+        "context.modules" = [
+          {
+            name = "libpipewire-module-raop-discover";
+
+            # increase the buffer size if you get dropouts/glitches
+            # args = {
+            #   "raop.latency.ms" = 500;
+            # };
+          }
+        ];
+      };
+    };
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
