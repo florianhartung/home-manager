@@ -72,15 +72,6 @@
           ];
           specialArgs = { inherit inputs; };
         };
-        homebase = lib.nixosSystem {
-          inherit system;
-          modules = [ ./hosts/homebase/configuration.nix ];
-          specialArgs = { inherit inputs; };
-        };
-        nixos-nas = lib.nixosSystem {
-          inherit system;
-          modules = [ ./hosts/nixos-nas/configuration.nix ];
-        };
       };
       homeConfigurations = {
         "flo" = home-manager.lib.homeManagerConfiguration {
