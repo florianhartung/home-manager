@@ -54,7 +54,7 @@
   };
 
   # development gitlab instance
-  modules.gitlab.enable = true;
+  # modules.gitlab.enable = true;
 
   fileSystems."/".options = [
     "compress=zstd"
@@ -83,19 +83,18 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.lanzaboote = {
-    enable = true;
+    # enable = true;
     pkiBundle = "/var/lib/sbctl";
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs-3g" ];
-  # boot.loader.grub = {
-  #   enable = true;
-  #   useOSProber = true;
-  #   efiSupport = true;
-  #   # device = "/dev/nvme0n1";
-  #   device = "nodev";
-  # };
+  boot.loader.grub = {
+    enable = true;
+    useOSProber = true;
+    efiSupport = true;
+    device = "nodev";
+  };
 
   # boot.initrd.kernelModules = ["i915"];
 
