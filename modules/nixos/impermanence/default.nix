@@ -1,7 +1,7 @@
 # TODO
 # - put setup guide somewhere
 # - commands for adding persistence for a file/directory. e.g. `cp -r {,/persist}/etc/nixos`
-# - command as shortcut for fs-diff.sh
+# - command as shortcut for fs-diff.sh. Alternatively: create a snapshot after everything is mounted (but before anything is written to /!). then rely on btrfs sub find-diff
 # - groups for commonly persisted files/directories. e.g. "bluetooth", "network", "ssh", "varlog"
 
 {
