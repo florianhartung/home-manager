@@ -348,10 +348,13 @@
     capSysNice = false; # broken with Steam
   };
 
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "performance";
-    cpufreq.min = 1600000;
+  # TODO: Check if this is required for GDM to not blackscreen after not logging
+  # in for a while (confirmed to happen during initial boot).
+  systemd.sleep.settings.Sleep = {
+    AllowHibernation = "no";
+    AllowHybridSleep = "no";
+    AllowSuspend = "no";
+    AllowSuspendThenHibernate = "no";
   };
 
   # virtualisiation
